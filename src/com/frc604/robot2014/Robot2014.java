@@ -1,12 +1,7 @@
 package com.frc604.robot2014;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
-import com.frc604.robot2014.command.Autonomous;
-import com.frc604.robot2014.component.BaseComponent;
-import com.frc604.robot2014.component.ComponentId;
+import com.frc604.robot2014.action.Autonomous;
+import com.frc604.robot2014.component.ComponentEnum;
 import com.frc604.robot2014.component.Drive;
 import com.frc604.robot2014.component.Flower;
 import com.frc604.robot2014.component.Intake;
@@ -25,48 +20,38 @@ public class Robot2014 extends IterativeRobot {
 	
 	public static OI oi;
 	
-	Map<ComponentId, BaseComponent> components = null;
-	
 	private Command autonomousCommand;
+	
+	ComponentManager cm = ComponentManager.getInstance();
 	
 	public void robotInit() {
 		
-		// Initialize the subsystems
-		components = new HashMap<ComponentId, BaseComponent>();
-		
 		// initialize the Drive subsystem
-		Drive drive = new Drive();
-		components.put(ComponentId.Drive, drive);
+		Drive drive = (Drive)cm.getComponent(ComponentEnum.Drive);
 		SmartDashboard.putData(drive);
 				
 		// initialize the Flower subsystem
-		Flower flower = new Flower();
-		components.put(ComponentId.Flower, flower);
+		Flower flower = (Flower)cm.getComponent(ComponentEnum.Flower);
 		SmartDashboard.putData(flower);
 		
 		// initialize the Intake subsystem
-		Intake intake = new Intake();
-		components.put(ComponentId.Intake, intake);
+		Intake intake =(Intake)cm.getComponent(ComponentEnum.Intake);
 		SmartDashboard.putData(intake);
 		
 		// initialize the Pivot subsystem
-		Pivot pivot = new Pivot();
-		components.put(ComponentId.Pivot, pivot);
+		Pivot pivot = (Pivot)cm.getComponent(ComponentEnum.Pivot);
 		SmartDashboard.putData(pivot);		
 		
 		// initialize the Shifter subsystem
-		Shifter shifter = new Shifter();
-		components.put(ComponentId.Shifter, shifter);
+		Shifter shifter = (Shifter)cm.getComponent(ComponentEnum.Shifter);
 		SmartDashboard.putData(shifter);
 		
 		// initialize the Pneumatics subsystem
-		Pneumatics pneumatics = new Pneumatics();
-		components.put(ComponentId.Pneumatic, pneumatics);
+		Pneumatics pneumatics = (Pneumatics)cm.getComponent(ComponentEnum.Pneumatics);
 		SmartDashboard.putData(pneumatics);		
 		
 		// initialize the Shooter subsystem
-		Shooter shooter = new Shooter();
-		components.put(ComponentId.Pneumatic, shooter);
+		Shooter shooter = (Shooter)cm.getComponent(ComponentEnum.Shooter);
 		SmartDashboard.putData(shooter);		
 		
         // instantiate the command used for the autonomous period
@@ -87,7 +72,6 @@ public class Robot2014 extends IterativeRobot {
 	}
 	
 	public void autonomousInit() {
-		
 		autonomousCommand.start();
 	}
 
@@ -105,35 +89,25 @@ public class Robot2014 extends IterativeRobot {
         autonomousCommand.cancel();
     }	
     
-    /**
-     * This function is called periodically during operator control
-     */
+    // This function is called periodically during operator control
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         log();
     }
     
-    /**
-     * This function is called periodically during test mode
-     */
+    // This function is called periodically during test mode
     public void testPeriodic() {
         LiveWindow.run();
     }    
 	
 	public void log(){
 		
-		if (this.components == null){
-			return;
-		}
-		
-		Iterator<ComponentId> itr = components.keySet().iterator();
-		
-		while (itr.hasNext()){
-			ComponentId key = (ComponentId)itr.next();
-			BaseComponent bc = components.get(key);
-			if (bc!=null){
-				bc.log();
-			}
-		}
+		cm.getComponent(ComponentEnum.Drive).log();
+		cm.getComponent(ComponentEnum.Intake).log();
+		cm.getComponent(ComponentEnum.Shifter).log();
+		cm.getComponent(ComponentEnum.Flower).log();
+		cm.getComponent(ComponentEnum.Pivot).log();
+		cm.getComponent(ComponentEnum.Pneumatics).log();
+		cm.getComponent(ComponentEnum.Shooter).log();
 	}
 }

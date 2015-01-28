@@ -6,7 +6,6 @@ public class Intake extends BaseComponent {
 
 	private final Victor motor = new Victor(5);
 	
-	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
 		
@@ -27,7 +26,6 @@ public class Intake extends BaseComponent {
 		motor.stopMotor();
 	}
 
-	@Override
 	public void log() {
 		// TODO Auto-generated method stub
 		

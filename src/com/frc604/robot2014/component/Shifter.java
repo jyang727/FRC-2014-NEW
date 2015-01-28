@@ -7,7 +7,6 @@ public class Shifter extends BaseComponent {
 
 	private final DoubleSolenoid solenoid = new DoubleSolenoid(1, 2);
 	
-	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
 		
@@ -28,7 +27,6 @@ public class Shifter extends BaseComponent {
 		solenoid.set(Value.kForward);
 	}
 
-	@Override
 	public void log() {
 		// TODO Auto-generated method stub
 		

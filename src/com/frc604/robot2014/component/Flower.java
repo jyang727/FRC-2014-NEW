@@ -8,7 +8,6 @@ public class Flower extends BaseComponent {
     private final Solenoid sides = new Solenoid(5);
     private final Solenoid bottom = new Solenoid(3);	
 
-	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
 		
@@ -55,7 +54,6 @@ public class Flower extends BaseComponent {
         bottom.set(false);		
 	}
 
-	@Override
 	public void log() {
 		// TODO Auto-generated method stub
 		

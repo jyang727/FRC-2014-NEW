@@ -1,4 +1,4 @@
-package com.frc604.robot2014.command;
+package com.frc604.robot2014.action;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 

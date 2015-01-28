@@ -20,7 +20,6 @@ public class Drive extends BaseComponent {
         }
     });
     
-	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
 	    leftEncoder.setPIDSourceParameter(PIDSourceParameter.kDistance);

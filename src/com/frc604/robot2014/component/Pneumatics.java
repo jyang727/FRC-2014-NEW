@@ -6,7 +6,6 @@ public class Pneumatics extends BaseComponent {
 
 	private final Compressor compressor = new Compressor(5, 1);
 	
-	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
 		
@@ -28,7 +27,6 @@ public class Pneumatics extends BaseComponent {
 		compressor.stop();
 	}
 
-	@Override
 	public void log() {
 		// TODO Auto-generated method stub
 		
