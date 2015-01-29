@@ -1,12 +1,12 @@
 package com.frc604.robot2014.action;
 
 import com.frc604.robot2014.component.ComponentEnum;
-import com.frc604.robot2014.component.Shifter;
+import com.frc604.robot2014.component.Intake;
 
-public class ShiftUp extends BaseAction {
+public class Takein extends BaseAction {
 	
-	public ShiftUp(){
-		requires(getComponent(ComponentEnum.Shifter));
+	public Takein(){
+		requires(getComponent(ComponentEnum.Intake));
 	}
 
 	protected void end() {
@@ -16,12 +16,13 @@ public class ShiftUp extends BaseAction {
 
 	protected void execute() {
 		// TODO Auto-generated method stub
+		
 	}
 
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		Shifter shifter = (Shifter)getComponent(ComponentEnum.Shifter);
-		shifter.highGear();				
+		Intake intake = (Intake)getComponent(ComponentEnum.Intake);
+		intake.On();
 	}
 
 	protected void interrupted() {

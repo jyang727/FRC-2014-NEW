@@ -2,6 +2,7 @@ package com.frc604.robot2014;
 
 import com.frc604.robot2014.action.ShiftDown;
 import com.frc604.robot2014.action.ShiftUp;
+import com.frc604.robot2014.action.Takein;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -9,7 +10,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class OI {
 
-	private Joystick driver = new Joystick(0);
+	private Joystick driver = new Joystick(1);
+	
+	private Joystick manipulator = new Joystick(3);
 
 	public OI() {
 		
@@ -23,6 +26,8 @@ public class OI {
         leftBumpper.whenPressed(new ShiftUp());
         rightBumpper.whenPressed(new ShiftDown());
         
+        JoystickButton button2 = new JoystickButton(manipulator, 2);
+        button2.whenPressed(new Takein());
 	}
 	
 	public Joystick getDriver() {
