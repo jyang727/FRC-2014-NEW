@@ -15,14 +15,22 @@ public class Intake extends BaseComponent {
 	 * Turn on the motor
 	 * 
 	 */
-	public void On(){
+	public void on(){
 		motor.set(-1.0d);
+	}
+	
+	/**
+	 * Turn on the motor
+	 * 
+	 */
+	public void reverse(){
+		motor.set(1.0d);
 	}
 	
 	/**
 	 * Turn off the motor
 	 */
-	public void Off(){
+	public void off(){
 		motor.stopMotor();
 	}
 
